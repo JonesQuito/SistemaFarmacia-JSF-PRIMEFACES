@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/templates/modeloSistema.xhtml">
+
+	<ui:define name="menu">
+		<ui:include src="/includes/menu.xhtml"></ui:include>
+	</ui:define>
+	
+	<ui:define name="conteudo">
+		<h:form id="frmProduto">
+			<p:dataTable id="tbProdutos" widgetVar="tabelaProdutos"
+				emptyMessage="Nenhum registro encontrado!!"
+				value="#{produtoBean.itens}" var="produto"
+				filteredValue="#{produtoBean.itensFiltrados}" paginator="true"
+				rows="5" update=":frmProduto:tbProdutos">
+				
+				<f:facet name="header">Lista de Produtos</f:facet>
+
+				<p:column headerText="Código" filterBy="#{produto.codigo}">
+					<h:outputText value="#{produto.codigo}" />
+				</p:column>
+
+				<p:column headerText="Descrição" filterBy="#{produto.descricao}">
+					<h:outputText value="#{produto.descricao}" />
+				</p:column>
+				
+				<p:column headerText="Preço" filterBy="#{produto.preco}">
+					<h:outputText value="R$ #{produto.preco}" />
+				</p:column>
+				
+				<p:column headerText="Estoque	" filterBy="#{produto.quantidade}">
+					<h:outputText value="#{produto.quantidade}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/hePl79mjEwQ" frameborder="0"></iframe>
+
+	</ui:define>
+
+</ui:composition>
